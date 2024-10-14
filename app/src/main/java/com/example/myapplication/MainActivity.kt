@@ -21,19 +21,19 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Initialize views
+
         editText1 = findViewById(R.id.editText1)
         editText2 = findViewById(R.id.editText2)
         button = findViewById(R.id.button)
         textView3 = findViewById(R.id.textView3)
 
-        // Set button click listener
+
         button.setOnClickListener {
             calculate()
         }
 
-        // Remove the second setContentView call
-        // enableEdgeToEdge()
+
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
