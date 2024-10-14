@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import kotlin.math.round
 
 class MainActivity : AppCompatActivity() {
 
@@ -50,10 +51,21 @@ class MainActivity : AppCompatActivity() {
         if (num1String.isNotEmpty() && num2String.isNotEmpty()) {
             val num1 = num1String.toDoubleOrNull()
             val num2 = num2String.toDoubleOrNull()
+            val federalTax: Double = 0.0808
+            val socialMedTax: Double = 0.0765
+
 
             if (num1 != null && num2 != null) {
                 val result = num1 * num2
-                textView3.text = result.toString()
+
+                val fedtaxresult = result * federalTax
+                val roundfed: Long = round(fedtaxresult).toLong()
+
+                val smtaxresult = result * socialMedTax
+                val roundsmtax: Long = round(smtaxresult).toLong()
+
+                val finalresult: Double = result - roundfed - roundsmtax
+                textView3.text = finalresult.toString()
             } else {
                 textView3.text = "Invalid input"
             }
